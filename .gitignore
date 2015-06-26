@@ -1,1 +1,5 @@
 /.idea
+/build
+/csocso.egg-info
+/venv
+/*.pyc
