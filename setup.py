@@ -6,6 +6,7 @@ setup(
     name='csocso',
     version='0.1',
     py_modules=['csocso'],
+    data_files=[('/etc/bash_completion.d', ['csocso-complete.sh'])],
     install_requires=[
         'Click',
     ],
