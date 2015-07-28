@@ -13,6 +13,9 @@ def cli():
 @cli.command()
 @click.argument('key', type=click.Choice(Settings.get_all_keys()), nargs=1, required=True)
 def get(key):
+    """
+    Get configuration parameter.
+    """
     try:
         click.echo(Settings.get(key))
     except Exception as ex:
@@ -24,6 +27,9 @@ def get(key):
 @click.argument('key', type=click.Choice(Settings.get_all_keys()), nargs=1, required=True)
 @click.argument('value', type=str, nargs=1, required=True)
 def set(key, value):
+    """
+    Set configuration parameter.
+    """
     try:
         Settings.set(key, value)
     except Exception as ex:
