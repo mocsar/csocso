@@ -5,7 +5,15 @@ Simple rating system from cmd line based on [TrueSkill](http://trueskill.org/).
 ## Installation
 
 ```
-pip install git+https://github.com/mocsar/csocso#egg=csocso
+sudo pip install git+https://github.com/mocsar/csocso#egg=csocso
+csocso config set db-uri URI
+```
+
+or
+
+```
+git clone https://github.com/mocsar/csocso
+sudo pip install csocso/
 csocso config set db-uri URI
 ```
 
