@@ -8,7 +8,7 @@ __author__ = 'mocsar'
 
 ### Standard URI format: mongodb://[dbuser:dbpassword@]host:port/dbname
 
-class Mongo:
+class Mongo(object):
     def __init__(self):
         db_uri = Settings.get('db-uri', '---')
         db_collection = Settings.get('mongo-db-collection', 'players')
@@ -47,6 +47,7 @@ class Mongo:
         :rtype : Player
         """
         values = self._get_rating(name)
+        if not values: return None
         return p.Player(name, Rating(float(values['mu']), float(values['sigma'])))
 
     def set_player(self, player):

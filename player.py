@@ -3,7 +3,7 @@ from store import Store
 
 __author__ = 'mocsar'
 
-class Player:
+class Player(object):
 
     def __init__(self, name, rating):
         """
@@ -17,7 +17,13 @@ class Player:
         """
         :rtype : float
         """
-        return trueskill.expose(self.rating)
+        return (trueskill.expose(self.rating) + trueskill.global_env().mu) * 3
+
+    def __repr__(self):
+        c = type(self)
+        args = ('.'.join([c.__module__, c.__name__]), repr(self.name), repr(self.rating))
+        return '%s(%s, %s)' % args
+
 
     @classmethod
     def create_player(cls, name):
@@ -57,10 +63,22 @@ class Player:
         if len(names) != 4:
             raise ValueError("Please specify 4 players")
 
-        winner1 = cls.get_player(names[0])
-        winner2 = cls.get_player(names[1])
-        loser1 = cls.get_player(names[2])
-        loser2 = cls.get_player(names[3])
+        players = []
+        missing = []
+        for name in names:
+            player =  cls.get_player(name)
+            if not player:
+                missing.append(name)
+            else:
+                players.append(player)
+
+        if missing:
+            raise RuntimeError("Players not registered: %s" % missing)
+
+        winner1 = players[0]
+        winner2 = players[1]
+        loser1 = players[2]
+        loser2 = players[3]
 
         winners = [winner1.rating, winner2.rating]
         losers = [loser1.rating, loser2.rating]

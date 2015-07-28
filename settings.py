@@ -4,7 +4,7 @@ __author__ = 'mocsar'
 
 import os
 
-class Settings:
+class Settings(object):
     _data = None
 
     @staticmethod
