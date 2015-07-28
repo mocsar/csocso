@@ -9,7 +9,12 @@ class Settings(object):
 
     @staticmethod
     def get_all_keys():
-        return ['db-uri', 'mongo-db-collection', ]
+        res = None
+        try:
+            res = ['db-uri', 'mongo-db-collection', ]
+        except:
+            pass
+        return res
 
     @staticmethod
     def get(key, default=None):

@@ -39,7 +39,12 @@ class Player(object):
         """
         :rtype : list[str]
         """
-        return [player.name for player in cls.get_all_players()]
+        res = None
+        try:
+            res = [player.name for player in cls.get_all_players()]
+        except:
+            pass
+        return res
 
     @classmethod
     def get_player(cls, name):
