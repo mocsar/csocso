@@ -9,6 +9,8 @@ setup(
     data_files=[('/etc/bash_completion.d', ['csocso-complete.sh'])],
     install_requires=[
         'Click',
+        'pymongo',
+        'trueskill'
     ],
     entry_points='''
         [console_scripts]
