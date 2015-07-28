@@ -16,7 +16,7 @@ class Mongo(object):
 
         db = self.client.get_default_database()
         self.collection = db[db_collection]
-        self.log_collection = db['logs']
+        self.log_collection = db['logs_' + db_collection]
 
     def _get_rating(self, name):
         if self.collection:
